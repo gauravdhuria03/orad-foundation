@@ -5,7 +5,9 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { FrontendLayoutComponent } from './layouts/frontend-layout/frontend-layout.component';
-
+import { LoginComponent } from './admin/login/login.component';
+import { AuthGuard } from './_helpers';
+import { Role } from './_models';
 const routes: Routes =[
   {
     path: '',
@@ -18,6 +20,7 @@ const routes: Routes =[
       path: '',
       loadChildren: './layouts/frontend-layout/frontend-layout.module#FrontendLayoutModule'
     }]
+    
   },
   {
     path: '',
@@ -25,8 +28,14 @@ const routes: Routes =[
     children: [{
       path: '',
       loadChildren: './layouts/admin-layout/admin-layout.module#AdminLayoutModule'
-    }]
-  }
+    }],
+    canActivate: [AuthGuard],
+    data: { roles: [Role.Admin] }
+  },
+  { path: 'admin/login',      component: LoginComponent },
+  { path: 'admin/logout',      component: LoginComponent },
+  
+
 ];
 
 @NgModule({
@@ -34,7 +43,7 @@ const routes: Routes =[
     CommonModule,
     BrowserModule,
     RouterModule.forRoot(routes,{
-       useHash: true
+       useHash: false
     })
   ],
   exports: [

@@ -1,7 +1,7 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { ROUTES } from '../sidebar/sidebar.component';
 import {Location, LocationStrategy, PathLocationStrategy} from '@angular/common';
-import { Router } from '@angular/router';
+import { Router , ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -14,8 +14,13 @@ export class NavbarComponent implements OnInit {
       mobile_menu_visible: any = 0;
     private toggleButton: any;
     private sidebarVisible: boolean;
+    
+    
 
-    constructor(location: Location,  private element: ElementRef, private router: Router) {
+    constructor(location: Location,  private element: ElementRef, private router: Router,
+        private route: ActivatedRoute,      
+      
+        ) {
       this.location = location;
           this.sidebarVisible = false;
     }
@@ -122,4 +127,6 @@ export class NavbarComponent implements OnInit {
       }
       return 'Dashboard';
     }
+
+
 }

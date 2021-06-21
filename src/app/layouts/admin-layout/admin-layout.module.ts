@@ -3,6 +3,8 @@ import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdminLayoutRoutes } from './admin-layout.routing';
+import { UsersListComponent } from '../../admin/users/list/list.component';
+import { EditUserComponent } from '../../admin/users/edit/edit.component';
 import { DashboardComponent } from '../../admin/dashboard/dashboard.component';
 import { UserProfileComponent } from '../../admin/user-profile/user-profile.component';
 import { TableListComponent } from '../../admin/table-list/table-list.component';
@@ -11,6 +13,7 @@ import { IconsComponent } from '../../admin/icons/icons.component';
 import { MapsComponent } from '../../admin/maps/maps.component';
 import { NotificationsComponent } from '../../admin/notifications/notifications.component';
 import { UpgradeComponent } from '../../admin/upgrade/upgrade.component';
+
 import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import {MatRippleModule} from '@angular/material/core';
@@ -32,6 +35,8 @@ import {MatSelectModule} from '@angular/material/select';
     MatTooltipModule,
   ],
   declarations: [
+    UsersListComponent,
+    EditUserComponent,
     DashboardComponent,
     UserProfileComponent,
     TableListComponent,
@@ -39,7 +44,8 @@ import {MatSelectModule} from '@angular/material/select';
     IconsComponent,
     MapsComponent,
     NotificationsComponent,
-    UpgradeComponent,
+    UpgradeComponent
+    
   ]
 })
 

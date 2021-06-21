@@ -1,4 +1,6 @@
 import { Routes } from '@angular/router';
+import { UsersListComponent } from '../../admin/users/list/list.component';
+import { EditUserComponent } from '../../admin/users/edit/edit.component';
 
 import { DashboardComponent } from '../../admin/dashboard/dashboard.component';
 import { UserProfileComponent } from '../../admin/user-profile/user-profile.component';
@@ -8,6 +10,7 @@ import { IconsComponent } from '../../admin/icons/icons.component';
 import { MapsComponent } from '../../admin/maps/maps.component';
 import { NotificationsComponent } from '../../admin/notifications/notifications.component';
 import { UpgradeComponent } from '../../admin/upgrade/upgrade.component';
+
 
 export const AdminLayoutRoutes: Routes = [
     // {
@@ -52,12 +55,15 @@ export const AdminLayoutRoutes: Routes = [
     //         component: UpgradeComponent
     //     }]
     // }
-    { path: 'dashboard',      component: DashboardComponent },
-    { path: 'user-profile',   component: UserProfileComponent },
-    { path: 'table-list',     component: TableListComponent },
-    { path: 'typography',     component: TypographyComponent },
-    { path: 'icons',          component: IconsComponent },
-    { path: 'maps',           component: MapsComponent },
-    { path: 'notifications',  component: NotificationsComponent },
-    { path: 'upgrade',        component: UpgradeComponent },
+    { path: 'admin/dashboard',component: DashboardComponent },
+    { path: 'admin/users', component: UsersListComponent },
+    { path: 'admin/users/edit/:id', component: EditUserComponent },
+    
+    { path: 'admin/user-profile',   component: UserProfileComponent },
+    { path: 'admin/table-list',     component: TableListComponent },
+    { path: 'admin/typography',     component: TypographyComponent },
+    { path: 'admin/icons',          component: IconsComponent },
+    { path: 'admin/maps',           component: MapsComponent },
+    { path: 'admin/notifications',  component: NotificationsComponent },
+    { path: 'admin/upgrade',        component: UpgradeComponent },
 ];

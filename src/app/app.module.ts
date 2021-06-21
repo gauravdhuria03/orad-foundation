@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
-
+import { AlertComponent } from './_components/alert.component';
 
 import { AppRoutingModule } from './app.routing';
 
@@ -12,14 +12,8 @@ import { ComponentsFrontendModule } from './frontend/components/components.modul
 
 import { AppComponent } from './app.component';
 
-import { DashboardComponent } from './admin/dashboard/dashboard.component';
-import { UserProfileComponent } from './admin/user-profile/user-profile.component';
-import { TableListComponent } from './admin/table-list/table-list.component';
-import { TypographyComponent } from './admin/typography/typography.component';
-import { IconsComponent } from './admin/icons/icons.component';
-import { MapsComponent } from './admin/maps/maps.component';
-import { NotificationsComponent } from './admin/notifications/notifications.component';
-import { UpgradeComponent } from './admin/upgrade/upgrade.component';
+
+import { LoginComponent } from './admin/login/login.component';
 import {
   AgmCoreModule
 } from '@agm/core';
@@ -37,6 +31,7 @@ import { FrontendLayoutComponent } from './layouts/frontend-layout/frontend-layo
     ComponentsFrontendModule,
     RouterModule,
     AppRoutingModule,
+    
     AgmCoreModule.forRoot({
       apiKey: 'YOUR_GOOGLE_MAPS_API_KEY'
     })
@@ -45,7 +40,8 @@ import { FrontendLayoutComponent } from './layouts/frontend-layout/frontend-layo
     AppComponent,
     AdminLayoutComponent,
     FrontendLayoutComponent,
-  
+    LoginComponent,
+    AlertComponent
 
   ],
   providers: [],

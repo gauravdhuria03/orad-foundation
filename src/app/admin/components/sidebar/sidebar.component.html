@@ -1,9 +1,10 @@
 <div class="logo">
-    <a href="https://www.creative-tim.com" class="simple-text">
+    <a href="" class="simple-text">
         <div class="logo-img">
-            <img src="/assets/img/angular2-logo-red.png"/>
+            <!-- <img src="/assets/img/angular2-logo-red.png"/> -->
+            
         </div>
-        Creative Tim
+        Orad Foundation
     </a>
 </div>
 <div class="sidebar-wrapper">
@@ -11,7 +12,7 @@
     <form class="navbar-form">
       <span class="bmd-form-group">
         <div class="input-group no-border">
-          <input type="text" value="" class="form-control" placeholder="Search...">
+          <input type="text" value="" class="form-control" placeholder="Search..ddd.">
           <button mat-raised-button type="submit" class="btn btn-white btn-round btn-just-icon">
             <i class="material-icons">search</i>
             <div class="ripple-container"></div>
@@ -59,6 +60,13 @@
             <a class="nav-link" [routerLink]="[menuItem.path]">
                 <i class="material-icons">{{menuItem.icon}}</i>
                 <p>{{menuItem.title}}</p>
+            </a>
+        </li>
+        <li  class=" nav-item">
+            <a class="nav-link" (click)="logout()">
+              
+                <i class="material-icons">logout</i>
+                <p>Logout</p>
             </a>
         </li>
     </ul>
