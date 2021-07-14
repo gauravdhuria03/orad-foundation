@@ -10,10 +10,16 @@ import { AuthGuard } from './_helpers';
 import { Role } from './_models';
 const routes: Routes =[
   {
-    path: '',
-    redirectTo: 'home',
+    path: 'admin',
+    redirectTo: 'admin/login',
     pathMatch: 'full',
-  }, {
+  },
+  {
+    path: '',
+    redirectTo: '/',
+    pathMatch: 'full',
+  },
+   {
     path: '',
     component: FrontendLayoutComponent,
     children: [{

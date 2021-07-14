@@ -1,0 +1,103 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title">Edit event</h4>
+                        <!-- <p class="card-category">Complete your profile</p> -->
+                    </div>
+                    <div class="card-body">
+                        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                  <mat-form-field class="example-full-width">
+                                      <input matInput formControlName="title" placeholder="title" [ngClass]="{ 'is-invalid': submitted && f.title.errors }">
+                                      <div *ngIf="submitted && f.title.errors" class="invalid-feedback">
+                                        <div *ngIf="f.title.errors.required">Title is required</div>
+                                      </div>
+                                    </mat-form-field>
+                                </div>
+                                
+                                <div class="col-md-4">
+                                    <mat-form-field class="example-full-width">
+                                      <input matInput formControlName="overview" placeholder="overview" type="text" [ngClass]="{ 'is-invalid': submitted && f.overview.errors }">
+                                      <div *ngIf="submitted && f.overview.errors" class="invalid-feedback">
+                                        <div *ngIf="f.overview.errors.required">Overview is required</div>
+                                      </div>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-4">
+                                    <mat-form-field class="example-full-width">
+                                      <input matInput formControlName="zoomLink" placeholder="Zoom Link" type="text" [ngClass]="{ 'is-invalid': submitted && f.zoomLink.errors }">
+                                      <div *ngIf="submitted && f.zoomLink.errors" class="invalid-feedback">
+                                        <div *ngIf="f.zoomLink.errors.required">Zoom link is required</div>
+                                    </div>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                  <mat-form-field class="example-full-width">
+                                    <input matInput placeholder="Zoom Id" type="text" formControlName="zoomId" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.zoomId.errors }" >
+                                    <div *ngIf="submitted && f.zoomId.errors" class="invalid-feedback">
+                                        <div *ngIf="f.zoomId.errors.required">Zoom Id is required</div>
+                                    </div>
+                          
+                                  </mat-form-field>
+                                </div>
+                                <div class="col-md-6">
+                                  <mat-form-field class="example-full-width">
+                                    <input matInput matDatepicker placeholder="Start Date" type="text" formControlName="startDate" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.startDate.errors }" >
+                                    <div *ngIf="submitted && f.startDate.errors" class="invalid-feedback">
+                                        <div *ngIf="f.startDate.errors.required">Start date is required</div>
+                                    </div>
+                                  </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+
+                                <input type="text" placeholder="Datepicker"  name="endDate" class="form-control"
+                               formControlName="endDate" autocomplete="off" bsDatepicker  [maxDate]="maxDate" [minDate]="minStartDate" (bsValueChange)="onValueChange($event)" [bsConfig]="{ adaptivePosition: true }" required [ngClass]="{ 'is-invalid': submitted && f.endDate.errors }">
+                                    <div *ngIf="submitted && f.endDate.errors" class="invalid-feedback">
+                                        <div *ngIf="f.endDate.errors.required">End date is required</div>
+                                    </div>
+                                </div>
+                            </div>
+                           
+                            <div class="row">
+                              <div class="col-md-12 mb-4">
+                                  <div class="video_upload">
+                                      <div class="video_section">
+                                          <div class="live_img height_104" *ngIf="!data.image">
+                                              <img src="../../../../assets/images/index.png" />
+                                          </div>
+                                          <div class="live_img height_104" *ngIf="data.image">
+                                              <img src="{{data.image}}" />
+                                          </div>
+                                      </div>
+          
+                                      <div class="video_text">
+                                          <p>Upload new thumbnail image <span><i title="Image associated with event" class="fa fa-info-circle" aria-hidden="true"></i></span></p>
+                                          <!-- <p><span>Recommended Image Size 200x200</span></p> -->
+                                          <input type="file" class="form-control" accept="image/*" formControlName="image"
+                                                 (change)="logoupload($event.target.files)">
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+           
+                          
+                            <button mat-raised-button type="submit" class="btn btn-danger pull-right">Update Profile</button>
+                            <div class="clearfix"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+  </div>
+  

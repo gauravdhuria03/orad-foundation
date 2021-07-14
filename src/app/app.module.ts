@@ -4,8 +4,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { AlertComponent } from './_components/alert.component';
+import {ToastrModule} from 'ngx-toastr';
 
 import { AppRoutingModule } from './app.routing';
+import { ToastrService } from 'ngx-toastr';
 
 import { ComponentsModule } from './admin/components/components.module';
 import { ComponentsFrontendModule } from './frontend/components/components.module';
@@ -31,10 +33,12 @@ import { FrontendLayoutComponent } from './layouts/frontend-layout/frontend-layo
     ComponentsFrontendModule,
     RouterModule,
     AppRoutingModule,
+    ToastrModule.forRoot(),
+
+    // AgmCoreModule.forRoot({
+    //   apiKey: 'YOUR_GOOGLE_MAPS_API_KEY'
+    // }),
     
-    AgmCoreModule.forRoot({
-      apiKey: 'YOUR_GOOGLE_MAPS_API_KEY'
-    })
   ],
   declarations: [
     AppComponent,
@@ -42,6 +46,8 @@ import { FrontendLayoutComponent } from './layouts/frontend-layout/frontend-layo
     FrontendLayoutComponent,
     LoginComponent,
     AlertComponent
+    
+    
 
   ],
   providers: [],

@@ -25,7 +25,7 @@ export class AccountService {
     }
 
     login(email, password) {
-        return this.http.post<User>(`${environment.apiUrl}/user/login`, { email, password })
+        return this.http.post<User>(`${environment.apiUrl}/users/login`, { email, password })
             .pipe(map(user => {
                 // store user details and jwt token in local storage to keep user logged in between page refreshes
                 localStorage.setItem('STATE', 'true');
@@ -43,7 +43,7 @@ export class AccountService {
         this.router.navigate(['/home']);
     }
     adminlogin(userName, password) {
-        return this.http.post<User>(`${environment.apiUrl}/user/adminlogin`, { userName, password })
+        return this.http.post<User>(`${environment.apiUrl}/users/adminlogin`, { userName, password })
             .pipe(map(user => {
                 
                 // store user details and jwt token in local storage to keep user logged in between page refreshes              
@@ -72,8 +72,11 @@ export class AccountService {
         return this.http.post(`${environment.apiUrl}/users/register`, user);
     }
 
-    getAll() {
-        return this.http.get<User[]>(`${environment.apiUrl}/users/list`);
+    getAll(params: any) {
+        return this.http.post<User[]>(`${environment.apiUrl}/users/list`,params);
+    }
+    countAll() {
+        return this.http.get<User[]>(`${environment.apiUrl}/users/count`);
     }
 
     getById(id: string) {
@@ -86,14 +89,13 @@ export class AccountService {
            
     }
 
-    delete(id: string) {
-        return this.http.delete(`${environment.apiUrl}/users/${id}`)
-            .pipe(map(x => {
-                // auto logout if the logged in user deleted their own record
-                if (id == this.userValue.id) {
-                    this.logout();
-                }
-                return x;
-            }));
+    delete(params) {
+        return this.http.post(`${environment.apiUrl}/users/delete`,params)
     }
+
+    changestatus(params) {
+        return this.http.post(`${environment.apiUrl}/users/changeStatusFromBackend`, params);
+           
+    }
+    
 }

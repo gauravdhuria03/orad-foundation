@@ -5,6 +5,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdminLayoutRoutes } from './admin-layout.routing';
 import { UsersListComponent } from '../../admin/users/list/list.component';
 import { EditUserComponent } from '../../admin/users/edit/edit.component';
+import { SponsorshipComponent } from '../../admin/sponsorship/sponsorship.component';
+import { InsiderComponent } from '../../admin/insider/insider.component';
+import { ContactsComponent } from '../../admin/contacts/contacts.component';
+import { EventsListComponent } from '../../admin/events/list/list.component';
+import { EditEventComponent } from '../../admin/events/edit/edit.component';
+
 import { DashboardComponent } from '../../admin/dashboard/dashboard.component';
 import { UserProfileComponent } from '../../admin/user-profile/user-profile.component';
 import { TableListComponent } from '../../admin/table-list/table-list.component';
@@ -20,6 +26,8 @@ import {MatRippleModule} from '@angular/material/core';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatSelectModule} from '@angular/material/select';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 
 @NgModule({
   imports: [
@@ -33,6 +41,9 @@ import {MatSelectModule} from '@angular/material/select';
     MatInputModule,
     MatSelectModule,
     MatTooltipModule,
+    MatPaginatorModule,
+    BsDatepickerModule.forRoot()
+
   ],
   declarations: [
     UsersListComponent,
@@ -44,7 +55,12 @@ import {MatSelectModule} from '@angular/material/select';
     IconsComponent,
     MapsComponent,
     NotificationsComponent,
-    UpgradeComponent
+    UpgradeComponent,
+    SponsorshipComponent,
+    InsiderComponent,
+    ContactsComponent,
+    EventsListComponent,
+    EditEventComponent
     
   ]
 })

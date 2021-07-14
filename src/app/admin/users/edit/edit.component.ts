@@ -25,6 +25,9 @@ export class EditUserComponent implements OnInit {
 
   ngOnInit() {
     this.form = this.formBuilder.group({
+      userName: ['', Validators.required],
+      email: ['', Validators.required],
+      mobileNumber: ['', Validators.required],
       firstName: ['', Validators.required],
         lastName: ['', Validators.required],
         street: ['', Validators.required],
@@ -52,9 +55,18 @@ export class EditUserComponent implements OnInit {
             }else{
              this.usersData=data['data'];  
             //  const { firstName:"ddd" };    
-            //  this.form.patchValue({
-            //   firstName
-            // });        
+             this.form.patchValue({
+              userName:this.usersData['userName'],
+              email:this.usersData['email'],
+              mobileNumber:this.usersData['mobileNumber'],
+              firstName:this.usersData['firstName'],
+              lastName:this.usersData['lastName'],
+              street:this.usersData['street'],
+              city:this.usersData['city'],
+              state:this.usersData['state'],
+              country:this.usersData['country'],
+              postalCode:this.usersData['postalCode']
+            });        
             }
             console.log("userDetails==",this.usersData);
         },
@@ -100,6 +112,6 @@ export class EditUserComponent implements OnInit {
                 this.alertService.error(error.message);
                 this.loading = false;
             });
-}
+  }
 
 }

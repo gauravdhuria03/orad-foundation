@@ -1,0 +1,97 @@
+<div class="main-content">
+  <div class="container-fluid">
+      <div class="row">
+         
+          <div class="col-md-12">
+              <div class="card card-plain">
+                  <div class="card-header card-header-danger">
+                      <h4 class="card-title mt-0">Events</h4>
+                      <p class="card-category"> Listing of all events</p>
+                  </div>
+                  <div class="card-body">
+                      <div class="table-responsive">
+                          <table class="table table-hover">
+                              <thead class="">
+                                  <th>
+                                      ID
+                                  </th>
+                                  <th>
+                                      Title
+                                  </th>
+                               
+                                  <th>
+                                    Overview
+                                  </th>
+                                  <th>
+                                      Zoom link
+                                  </th>
+                                  <th>
+                                    Start date
+                                  </th>
+                                  <th>
+                                    End date
+                                  </th>
+                                  <th>
+                                    Status
+                                    </th>
+                                  <th>
+                                    Action
+                                </th>
+                              </thead>
+                              <tbody>
+                                  <tr *ngFor="let udata  of dataObject">
+                                      <td>
+                                          1
+                                      </td>
+                                      <td>
+                                          {{udata.title}}
+                                      </td>
+                                      <td>
+                                        {{udata.overview}}
+                                      </td>
+                                      <td>
+                                        {{udata.zoomLink}}
+                                      </td>
+                                      <td>
+                                       {{ moment.unix(udata.startDate).format("DD/MM/yyyy hh:mm a")}}
+
+                                      </td>
+                                      <td>
+                                        {{moment.unix(udata.endDate).format("DD/MM/yyyy hh:mm a")}}
+                                      </td>
+                                      <td>
+                                        <span *ngIf="udata.isActive == true" (click)="changeStatus(udata._id,false)">Active</span>
+
+                                        <span *ngIf="udata.isActive == false" (click)="changeStatus(udata._id,true)">Inactive</span>
+                                      </td>
+                                      <td>
+
+                                        
+                                      
+                                        
+                                        <span class="material-icons" (click)="edit(udata._id)">
+                                        edit
+                                        </span>
+                                        
+                                        <span class="material-icons" (click)="delete(udata._id)">
+                                            delete
+                                        </span>
+
+                                    </td>
+                                  </tr>
+                              
+                              
+                              </tbody>
+                          </table>
+                          <div *ngIf="noRecordFound" class="mt-3 ml-5 text-center">
+                            No Records Found
+                        </div>
+                      </div>
+                  </div>
+                  <mat-paginator [length]="totalCount" [pageSize]="count" (page)="paginate($event)" [pageSizeOptions]="[5,10,15,20]" showFirstLastButtons></mat-paginator>
+
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
