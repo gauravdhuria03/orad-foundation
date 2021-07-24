@@ -9,6 +9,8 @@ import { HomeComponent } from '../../frontend/home/home.component';
 import { LoginComponent } from '../../frontend/login/login.component';
 import { RegisterComponent } from '../../frontend/register/register.component';
 
+import { ContactsComponent } from '../../frontend/contacts/contacts.component';
+
 
 import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
@@ -33,7 +35,8 @@ import {MatSelectModule} from '@angular/material/select';
   declarations: [
     HomeComponent,
     LoginComponent,
-    RegisterComponent,    
+    RegisterComponent,   
+    ContactsComponent, 
   ]
 })
 

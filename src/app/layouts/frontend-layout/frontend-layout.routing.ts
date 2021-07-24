@@ -4,6 +4,8 @@ import { HomeComponent } from '../../frontend/home/home.component';
 import { LoginComponent } from '../../frontend/login/login.component';
 import { RegisterComponent } from '../../frontend/register/register.component';
 
+import { ContactsComponent } from '../../frontend/contacts/contacts.component';
+
 
 export const FrontendLayoutRoutes: Routes = [
     // {
@@ -48,9 +50,13 @@ export const FrontendLayoutRoutes: Routes = [
     //         component: UpgradeComponent
     //     }]
     // }
+    { path: '',      component: HomeComponent },
     { path: '/',      component: HomeComponent },
     { path: 'home',      component: HomeComponent },
     { path: 'login',   component: LoginComponent },
     { path: 'register',     component: RegisterComponent },
+    { path: 'contact-us',     component: ContactsComponent },
+
+    
     
 ];

@@ -2,7 +2,7 @@
 * jQuery-Calendar Plugin v1.1.0
 */
 
-$(function () {
+$(function ($) {
     $('#calendar').calendar({
         months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
         days: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']

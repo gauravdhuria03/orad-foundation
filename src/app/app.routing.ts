@@ -8,6 +8,7 @@ import { FrontendLayoutComponent } from './layouts/frontend-layout/frontend-layo
 import { LoginComponent } from './admin/login/login.component';
 import { AuthGuard } from './_helpers';
 import { Role } from './_models';
+
 const routes: Routes =[
   {
     path: 'admin',

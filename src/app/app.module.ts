@@ -21,7 +21,7 @@ import {
 } from '@agm/core';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { FrontendLayoutComponent } from './layouts/frontend-layout/frontend-layout.component';
-
+import * as jQuery from 'jquery';
 
 @NgModule({
   imports: [
@@ -46,6 +46,7 @@ import { FrontendLayoutComponent } from './layouts/frontend-layout/frontend-layo
     FrontendLayoutComponent,
     LoginComponent,
     AlertComponent
+    
     
     
 

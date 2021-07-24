@@ -9,6 +9,7 @@ tpj=jQuery;
 /* header classicinfo (homepage -1 )*/
 
  tpj(document).ready(function() {
+   
   if(tpj("#rev_slider_4_1").revolution == undefined){
       revslider_showDoubleJqueryError("#rev_slider_4_1");
     }else{

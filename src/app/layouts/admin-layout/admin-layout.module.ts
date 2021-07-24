@@ -13,12 +13,7 @@ import { EditEventComponent } from '../../admin/events/edit/edit.component';
 
 import { DashboardComponent } from '../../admin/dashboard/dashboard.component';
 import { UserProfileComponent } from '../../admin/user-profile/user-profile.component';
-import { TableListComponent } from '../../admin/table-list/table-list.component';
-import { TypographyComponent } from '../../admin/typography/typography.component';
-import { IconsComponent } from '../../admin/icons/icons.component';
-import { MapsComponent } from '../../admin/maps/maps.component';
-import { NotificationsComponent } from '../../admin/notifications/notifications.component';
-import { UpgradeComponent } from '../../admin/upgrade/upgrade.component';
+
 
 import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
@@ -50,12 +45,7 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
     EditUserComponent,
     DashboardComponent,
     UserProfileComponent,
-    TableListComponent,
-    TypographyComponent,
-    IconsComponent,
-    MapsComponent,
-    NotificationsComponent,
-    UpgradeComponent,
+  
     SponsorshipComponent,
     InsiderComponent,
     ContactsComponent,
