@@ -13,6 +13,9 @@ export class ContactsService {
         private http: HttpClient
     ) {}
 
+    add(params: any) {
+        return this.http.post(`${environment.apiUrl}/contacts/add`,params);           
+    }
     getContactsList(params: any) {
         return this.http.post(`${environment.apiUrl}/contacts/getContactsList`,params);           
     }

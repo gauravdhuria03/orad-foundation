@@ -3,14 +3,14 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 import * as Moment from 'moment';
-import { ContactsService, AlertService } from '../../_services';
+import { SponsorshipService, AlertService } from '../../_services';
 
 @Component({
-  selector: 'app-contacts',
-  templateUrl: './contacts.component.html',
-  styleUrls: ['./contacts.component.css']
+  selector: 'app-sponsorship',
+  templateUrl: './sponsorship.component.html',
+  styleUrls: ['./sponsorship.component.css']
 })
-export class ContactsComponent implements OnInit {
+export class SponsorshipComponent implements OnInit {
   loading = false;
   submitted = false;
   data = [];
@@ -28,18 +28,22 @@ export class ContactsComponent implements OnInit {
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
       private router: Router,
-      private contactsService: ContactsService,
+      private sponsorshipService: SponsorshipService,
       private alertService: AlertService
   ) { }
 
   ngOnInit() {
     this.loading = true;
     this.form = this.formBuilder.group({
-      userName: ['', Validators.required],
-      cellPhone: ['', Validators.required],
+      companyName: ['', Validators.required],
+      companyContactName: ['', Validators.required],
+      companyPhoneNumber: ['', Validators.required],
       email: ['', Validators.required],
-      subject: ['', Validators.required],
-      message: ['', Validators.required]
+      companyWebsite: ['', Validators.required],
+      levelOfSponsership: ['', Validators.required],
+      companyAddress1: ['', Validators.required],
+      companyAddress2: ['', Validators.required],      
+      comment: ['', Validators.required]
     });
     this.loading = false;
   }
@@ -63,14 +67,18 @@ export class ContactsComponent implements OnInit {
 
     this.loading = true;
     let params={
-      userName:this.f.userName.value,
-      cellPhone:this.f.cellPhone.value, 
+      companyName:this.f.companyName.value,
+      companyContactName:this.f.companyContactName.value, 
+      companyPhoneNumber:this.f.companyPhoneNumber.value,
       email:this.f.email.value,
-      subject:this.f.subject.value,
-      message:this.f.message.value   
+      companyWebsite:this.f.companyWebsite.value,
+      levelOfSponsership:this.f.levelOfSponsership.value,
+      companyAddress1:this.f.companyAddress1.value,
+      companyAddress2:this.f.companyAddress2.value ,  
+      comment:this.f.comment.value   
     }
     console.log("ddddd====");
-    this.contactsService.add(params)
+    this.sponsorshipService.add(params)
         .pipe(first())
         .subscribe(
             data => {
@@ -92,6 +100,4 @@ export class ContactsComponent implements OnInit {
               this.loading = false;
             });
   }
-
-
 }

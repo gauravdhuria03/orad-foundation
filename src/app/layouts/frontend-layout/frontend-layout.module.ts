@@ -3,14 +3,15 @@ import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FrontendLayoutRoutes } from './frontend-layout.routing';
-
-
 import { HomeComponent } from '../../frontend/home/home.component';
 import { LoginComponent } from '../../frontend/login/login.component';
 import { RegisterComponent } from '../../frontend/register/register.component';
 
 import { ContactsComponent } from '../../frontend/contacts/contacts.component';
-
+import { InsiderComponent } from '../../frontend/insider/insider.component';
+import { SponsorshipComponent } from '../../frontend/sponsorship/sponsorship.component';
+import { EventsComponent } from '../../frontend/events/events.component';
+import { EventDetailsComponent } from '../../frontend/event-details/event-details.component';
 
 import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
@@ -30,13 +31,18 @@ import {MatSelectModule} from '@angular/material/select';
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
-    MatTooltipModule,
+    MatTooltipModule
+    
   ],
   declarations: [
     HomeComponent,
     LoginComponent,
     RegisterComponent,   
     ContactsComponent, 
+    InsiderComponent,
+    SponsorshipComponent,
+    EventsComponent,
+    EventDetailsComponent,
   ]
 })
 

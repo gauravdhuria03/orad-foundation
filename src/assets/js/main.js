@@ -47,9 +47,9 @@
     // makes sure the whole site is loaded
  $(window).on("load",function() {
         // will first fade out the loading animation
-     $("#preloader").fadeOut();
+  //   $("#preloader").fadeOut();
         // will fade out the whole DIV that covers the website.
-     $("#status").fadeOut(9000);
+    // $("#status").fadeOut(9000);
 })
 
 

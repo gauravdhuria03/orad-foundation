@@ -5,6 +5,10 @@ import { LoginComponent } from '../../frontend/login/login.component';
 import { RegisterComponent } from '../../frontend/register/register.component';
 
 import { ContactsComponent } from '../../frontend/contacts/contacts.component';
+import { InsiderComponent } from '../../frontend/insider/insider.component';
+import { SponsorshipComponent } from '../../frontend/sponsorship/sponsorship.component';
+import { EventsComponent } from '../../frontend/events/events.component';
+import { EventDetailsComponent } from '../../frontend/event-details/event-details.component';
 
 
 export const FrontendLayoutRoutes: Routes = [
@@ -56,7 +60,9 @@ export const FrontendLayoutRoutes: Routes = [
     { path: 'login',   component: LoginComponent },
     { path: 'register',     component: RegisterComponent },
     { path: 'contact-us',     component: ContactsComponent },
-
-    
+    { path: 'become-an-insider',     component: InsiderComponent },
+    { path: 'sponsorship',     component: SponsorshipComponent },
+    { path: 'events',     component:EventsComponent},
+    { path: 'event-details',     component:EventDetailsComponent},
     
 ];

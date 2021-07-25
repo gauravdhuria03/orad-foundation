@@ -16,7 +16,9 @@ export class InsiderService {
 
   
 
-
+    add(params: any) {
+        return this.http.post(`${environment.apiUrl}/insider/add`,params);           
+    }
     getInsiderList(params: any) {
         return this.http.post(`${environment.apiUrl}/insider/getInsiderList`,params);
            

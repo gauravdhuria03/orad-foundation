@@ -1,0 +1,135 @@
+<div class="ttm-page-title-row">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12"> 
+                <div class="title-box ttm-textcolor-white">
+                    <div class="page-title-heading">
+                        <h1 class="title">Become an insider</h1>
+                        <h3 class="subtitle"></h3>
+                    </div><!-- /.page-title-captions -->
+                    <div class="breadcrumb-wrapper">
+                        <div class="container">
+                            <div class="breadcrumb-wrapper-inner">
+                                <span>
+                                    <a title="Go to Delmont." routerLink="/home" class="home"><i class="themifyicon ti-home"></i>&nbsp;&nbsp;Home</a>
+                                </span>
+                                <span class="ttm-bread-sep">&nbsp; | &nbsp;</span>
+                                <span>Become an insider</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- /.col-md-12 -->  
+        </div><!-- /.row -->  
+    </div><!-- /.container -->                      
+</div><!-- page-title end-->
+
+
+<!--site-main start-->
+<div class="site-main">
+
+<!-- multi-section -->
+<section class="ttm-row multi-section break-991-colum clearfix">
+    <div class="container">
+        <div class="row res-1199-mlr-15 res-991-mt-50 box-shadow2 no-gutters">
+            <div class="col-md-5">
+                <!-- col-bg-img-four -->
+                <div class="col-bg-img-four ttm-bg ttm-col-bgimage-yes">
+                    <div class="ttm-col-wrapper-bg-layer ttm-bg-layer"></div>
+                    <div class="layer-content">
+                    </div>
+                </div><!-- col-bg-img-three end -->
+                <img src="images/portfolio/04.jpg" class="ttm-equal-height-image" alt="bg-image">
+            </div>
+            <div class="col-md-7">
+                <div class="spacing-4 ttm-bgcolor-white">
+                    <!-- section title -->
+                    <div class="section-title with-desc text-center clearfix">
+                        <div class="title-header">
+                            <div class="alert alert-success" role="alert" *ngIf="success">
+                                {{successMessage}}
+                              </div>
+                              <div class="alert alert-danger" role="alert" *ngIf="error">
+                                {{errorMessage}}
+                              </div>
+                            <h2 class="title">Become an Insider</h2>
+                        </div>
+                        <div class="title-desc">Becomes an insider today. Subscribe to our newsletter.</div>
+                    </div><!-- section title end -->
+                    <form id="ttm-make-appoint-form" class="ttm-make-appoint-form wrap-form mt_15 clearfix" [formGroup]="form" (ngSubmit)="onSubmit()">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <label>
+                                    <span class="text-input">
+                                        <i class="ttm-textcolor-skincolor ti-user"></i>                                       
+                                        <input type="text" formControlName="firstName"  placeholder="First Name" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }">
+                                        <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+                                            <div *ngIf="f.firstName.errors.required">First Name is required</div>
+                                        </div> 
+                                    </span>
+                                </label>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <label>
+                                    <span class="text-input">
+                                        <i class="ttm-textcolor-skincolor ti-user"></i>                                        
+                                        <input type="text" formControlName="lastName"  placeholder="First Name" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }">
+                                        <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+                                            <div *ngIf="f.lastName.errors.required">last Name is required</div>
+                                        </div> 
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <label>
+                                    <span class="text-input">
+                                        <i class="ttm-textcolor-skincolor ti-email"></i>
+                                        <input type="email" formControlName="email"  placeholder="Email Address" [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+                                        <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                                            <div *ngIf="f.email.errors.required">Email is required</div>
+                                        </div>
+                                    </span>
+                                </label>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <label>
+                                    <span class="text-input">
+                                        <i class="ttm-textcolor-skincolor ti-mobile"></i>                                        
+                                        <input type="text" formControlName="phoneNumber"  placeholder="Phone Number" [ngClass]="{ 'is-invalid': submitted && f.phoneNumber.errors }">
+                                        <div *ngIf="submitted && f.phoneNumber.errors" class="invalid-feedback">
+                                            <div *ngIf="f.phoneNumber.errors.required">Phone Number is required</div>
+                                        </div>
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            
+                            <div class="col-lg-12">
+                                <label>
+                                    <span class="text-input">
+                                        <i class="ttm-textcolor-skincolor ti-comment"></i>
+                                        <input type="text" formControlName="jobTitle" placeholder="Job Title"  [ngClass]="{ 'is-invalid': submitted && f.jobTitle.errors }">
+                                        <div *ngIf="submitted && f.jobTitle.errors" class="invalid-feedback">
+                                            <div *ngIf="f.jobTitle.errors.required">Job Title is required</div>
+                                        </div>
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+                        <input name="submit" type="submit" id="submit" class="submit" value="SUBMIT">
+                    </form>
+                </div>
+            </div>
+        </div><!-- row end -->
+    </div>
+</section>
+<!--multi-section end-->
+
+</div><!--site-main end-->

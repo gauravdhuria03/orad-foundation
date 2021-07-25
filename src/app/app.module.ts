@@ -33,8 +33,7 @@ import * as jQuery from 'jquery';
     ComponentsFrontendModule,
     RouterModule,
     AppRoutingModule,
-    ToastrModule.forRoot(),
-
+    ToastrModule.forRoot(),       
     // AgmCoreModule.forRoot({
     //   apiKey: 'YOUR_GOOGLE_MAPS_API_KEY'
     // }),
@@ -46,10 +45,8 @@ import * as jQuery from 'jquery';
     FrontendLayoutComponent,
     LoginComponent,
     AlertComponent
+ 
     
-    
-    
-
   ],
   providers: [],
   bootstrap: [AppComponent]

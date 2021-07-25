@@ -16,7 +16,9 @@ export class SponsorshipService {
 
   
 
-
+    add(params: any) {
+        return this.http.post(`${environment.apiUrl}/sponsorship/add`,params);           
+    }
     getSponsorshipList(params: any):Rx.Observable<any> {
         return this.http.post(`${environment.apiUrl}/sponsorship/getSponsorshipList`,params);
            

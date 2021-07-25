@@ -4,7 +4,7 @@
             <!-- ttm-fbar-main-w -->
             
             <!-- ttm-topbar-wrapper -->
-            <div class="ttm-topbar-wrapper ttm-bgcolor-darkgrey ttm-textcolor-white clearfix">
+            <!-- <div class="ttm-topbar-wrapper ttm-bgcolor-darkgrey ttm-textcolor-white clearfix">
                 <div class="container">
                     <div class="ttm-topbar-content">
                         <ul class="top-contact text-left">
@@ -20,7 +20,8 @@
                         </div>
                     </div>
                 </div>
-            </div><!-- ttm-topbar-wrapper end -->
+            </div> -->
+            <!-- ttm-topbar-wrapper end -->
             <!-- ttm-header-wrap -->
             <div class="ttm-header-wrap">
                 <!-- ttm-stickable-header-w -->
@@ -30,9 +31,9 @@
                             <div class="container">
                                 <!-- site-branding -->
                                 <div class="site-branding">
-                                    <a class="home-link" href="../../../../assets/index.html" title="Delmont" rel="home">
-                                        <img id="logo-img" class="img-center" src="./assets/images/dr-sign.png" alt="logo-img">
-                                        <h3>Logo</h3>
+                                    <a class="home-link" routerLink="home" title="Delmont" rel="home">
+                                        <img id="logo-img" class="img-center" src="./assets/images/logo.png" alt="logo-img">
+                                        <!-- <h3>Logo</h3> -->
                                     </a>
                                 </div><!-- site-branding end -->
                                 <!--site-navigation -->
@@ -49,11 +50,11 @@
                                     </div>
                                     <nav id="menu" class="menu">
                                         <ul class="dropdown">
-                                           <li class="active"><a href="../../../../assets/index.html">Home</a></li>
-                                            <li><a href="../../../../assets/#">Events</a></li>
-                                            <li><a href="../../../../assets/#">Sponsorship</a></li>
-                                            <li><a href="../../../../assets/#">Become an insider</a></li>
-                                            <li><a class="pr-0" href="../../../../assets/#">Donate</a></li>
+                                           <li class="active"><a routerLink="home">Home</a></li>
+                                            <li><a routerLink="events">Events</a></li>
+                                            <li><a routerLink="sponsorship">Sponsorship</a></li>
+                                            <li><a routerLink="become-an-insider">Become an insider</a></li>
+                                            <li><a class="pr-0" target="_blank" href="https://www.paypal.com/paypalme/ORADHealthServices">Donate</a></li>
                                         </ul>
                                     </nav>
                                 </div><!-- site-navigation end-->

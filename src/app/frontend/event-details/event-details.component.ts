@@ -6,11 +6,12 @@ import * as Moment from 'moment';
 import { ContactsService, AlertService } from '../../_services';
 
 @Component({
-  selector: 'app-contacts',
-  templateUrl: './contacts.component.html',
-  styleUrls: ['./contacts.component.css']
+  selector: 'app-event-details',
+  templateUrl: './event-details.component.html',
+  styleUrls: ['./event-details.component.css']
 })
-export class ContactsComponent implements OnInit {
+export class EventDetailsComponent implements OnInit {
+
   loading = false;
   submitted = false;
   data = [];
@@ -92,6 +93,4 @@ export class ContactsComponent implements OnInit {
               this.loading = false;
             });
   }
-
-
 }

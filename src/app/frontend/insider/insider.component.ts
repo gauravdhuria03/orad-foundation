@@ -3,14 +3,16 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 import * as Moment from 'moment';
-import { ContactsService, AlertService } from '../../_services';
+import { InsiderService, AlertService } from '../../_services';
+
 
 @Component({
-  selector: 'app-contacts',
-  templateUrl: './contacts.component.html',
-  styleUrls: ['./contacts.component.css']
+  selector: 'app-insider',
+  templateUrl: './insider.component.html',
+  styleUrls: ['./insider.component.css']
 })
-export class ContactsComponent implements OnInit {
+export class InsiderComponent implements OnInit {
+
   loading = false;
   submitted = false;
   data = [];
@@ -28,18 +30,18 @@ export class ContactsComponent implements OnInit {
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
       private router: Router,
-      private contactsService: ContactsService,
+      private insiderService: InsiderService,
       private alertService: AlertService
   ) { }
 
   ngOnInit() {
     this.loading = true;
     this.form = this.formBuilder.group({
-      userName: ['', Validators.required],
-      cellPhone: ['', Validators.required],
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
       email: ['', Validators.required],
-      subject: ['', Validators.required],
-      message: ['', Validators.required]
+      phoneNumber: ['', Validators.required],
+      jobTitle: ['', Validators.required]
     });
     this.loading = false;
   }
@@ -63,14 +65,14 @@ export class ContactsComponent implements OnInit {
 
     this.loading = true;
     let params={
-      userName:this.f.userName.value,
-      cellPhone:this.f.cellPhone.value, 
+      firstName:this.f.firstName.value,
+      lastName:this.f.lastName.value, 
       email:this.f.email.value,
-      subject:this.f.subject.value,
-      message:this.f.message.value   
+      phoneNumber:this.f.phoneNumber.value,
+      jobTitle:this.f.jobTitle.value   
     }
     console.log("ddddd====");
-    this.contactsService.add(params)
+    this.insiderService.add(params)
         .pipe(first())
         .subscribe(
             data => {
@@ -92,6 +94,5 @@ export class ContactsComponent implements OnInit {
               this.loading = false;
             });
   }
-
 
 }

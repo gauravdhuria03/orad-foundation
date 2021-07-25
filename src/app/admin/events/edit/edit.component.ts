@@ -63,9 +63,8 @@ export class EditEventComponent implements OnInit {
               overview:this.data['overview'],
               zoomLink:this.data['zoomLink'],
               zoomId:this.data['zoomId'],
-             // startDate: moment.unix(this.data['startDate']).format("DD/MM/yyyy hh:mm a"),
-             // endDate: moment.unix(this.data['endDate']).format("DD/MM/yyyy hh:mm a"),
-              image:this.data['image']
+             startDate: this.data['startDate'],
+             endDate: this.data['endDate'],             
             });        
             }
             console.log("eventData==",this.data);
@@ -80,6 +79,12 @@ export class EditEventComponent implements OnInit {
     this.form.get('endDate').patchValue('');
     this.minEndDate=value;
 }
+
+logoupload(e){
+  
+  
+}
+
   onSubmit() {
     this.submitted = true;
 

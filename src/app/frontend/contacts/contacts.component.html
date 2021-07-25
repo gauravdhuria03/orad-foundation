@@ -122,23 +122,28 @@
                     <div class="section-title with-desc clearfix">
                         <div class="title-header">
                             <!-- <h5>WHAT WE DO</h5> -->
+                            <div class="alert alert-success" role="alert" *ngIf="success">
+                                {{successMessage}}
+                              </div>
+                              <div class="alert alert-danger" role="alert" *ngIf="error">
+                                {{errorMessage}}
+                              </div>
                             <h2 class="title">Get In Touch</h2>
                         </div>
                         <!-- <div class="title-desc">We offer extensive medical procedures to outbound and inbound patients what it is and we are very proud of achievpatients for recovery</div> -->
                     </div><!-- section title end -->                    
                         <form id="ttm-contactform" class="ttm-contactform wrap-form clearfix" [formGroup]="form" (ngSubmit)="onSubmit()">
-                        <label>                            
-                            <span class="text-input"><i class="ttm-textcolor-skincolor ti-user"></i>
-                               
-                               <input  formControlName="userName" placeholder="Your Name" [ngClass]="{ 'is-invalid': submitted && f.userName.errors }">
-                               <div *ngIf="submitted && f.userName.errors" class="invalid-feedback">
-                                 <div *ngIf="f.userName.errors.required">Your name is required</div>
-                               </div>    
-                            </span>
-                        </label>
+                            <label>                            
+                                <span class="text-input"><i class="ttm-textcolor-skincolor ti-user"></i>                               
+                                    <input type="text" formControlName="userName"  placeholder="Your Name" [ngClass]="{ 'is-invalid': submitted && f.userName.errors }">
+                                    <div *ngIf="submitted && f.userName.errors" class="invalid-feedback">
+                                        <div *ngIf="f.userName.errors.required">Your name is required</div>
+                                    </div> 
+                                </span>                               
+                            </label>
                         <label>
                             <span class="text-input"><i class="ttm-textcolor-skincolor ti-mobile"></i>
-                                <input  formControlName="cellPhone" placeholder="Cell Phone" [ngClass]="{ 'is-invalid': submitted && f.cellPhone.errors }">
+                                <input pattern="[0-9]+" type="text" formControlName="cellPhone" maxlength="10" placeholder="Cell Phone" [ngClass]="{ 'is-invalid': submitted && f.cellPhone.errors }">
                                 <div *ngIf="submitted && f.cellPhone.errors" class="invalid-feedback">
                                  <div *ngIf="f.cellPhone.errors.required">Cell phone is required</div>
                                 </div>
@@ -147,7 +152,7 @@
                         <label>
                             <span class="text-input"><i class="ttm-textcolor-skincolor ti-email"></i>
                                 
-                                <input  formControlName="email" placeholder="email" [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+                                <input type="text" formControlName="email" placeholder="email" [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
                                 <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
                                  <div *ngIf="f.email.errors.required">Email is required</div>
                                 </div>
@@ -155,7 +160,7 @@
                         </label>
                         <label>
                             <span class="text-input"><i class="ttm-textcolor-skincolor ti-comment-alt"></i>                                
-                                <input formControlName="subject" placeholder="Subject" [ngClass]="{ 'is-invalid': submitted && f.subject.errors }">
+                                <input type="text" formControlName="subject" placeholder="Subject" [ngClass]="{ 'is-invalid': submitted && f.subject.errors }">
                                 <div *ngIf="submitted && f.subject.errors" class="invalid-feedback">
                                  <div *ngIf="f.subject.errors.required">Subject is required</div>
                                 </div>
@@ -185,3 +190,8 @@
 
 
 </div><!--site-main end-->
+
+ <!-- preloader start -->
+ <div id="preloader" *ngIf="loading">
+    <div id="status" *ngIf="loading">&nbsp;</div>
+  </div> 
