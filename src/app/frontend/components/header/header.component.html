@@ -40,7 +40,7 @@
                                 <div id="site-navigation" class="site-navigation">
                                     <!-- header-icons -->
                                     
-                                    <div class="ttm-menu-toggle">
+                                    <div class="ttm-menu-toggle"  (click)="toggleClock($event)">
                                         <input type="checkbox" id="menu-toggle-form" />
                                         <label for="menu-toggle-form" class="ttm-menu-toggle-block">
                                             <span class="toggle-block toggle-blocks-1"></span>
@@ -49,7 +49,7 @@
                                         </label>
                                     </div>
                                     <nav id="menu" class="menu">
-                                        <ul class="dropdown">
+                                        <ul class="dropdown" (click)="hideDropdown($event)">
                                            <li class="active"><a routerLink="home">Home</a></li>
                                             <li><a routerLink="events">Events</a></li>
                                             <li><a routerLink="sponsorship">Sponsorship</a></li>
@@ -65,4 +65,6 @@
             </div><!--ttm-header-wrap end -->
           
         </header><!--header end-->
-        
+        <script>
+           
+        </script>

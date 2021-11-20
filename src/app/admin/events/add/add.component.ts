@@ -168,7 +168,7 @@ uploadEventImage(e){
         Swal.fire({
           title: "Error",
           icon: "error",
-          text: "Height and Width must be 600 * 400.",
+          text: "Height and Width must be 800 * 1200.",
           focusConfirm: true,
           confirmButtonColor: "#000000",
           confirmButtonText: "OK",
