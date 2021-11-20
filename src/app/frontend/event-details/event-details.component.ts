@@ -3,7 +3,9 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 import * as Moment from 'moment';
-import { ContactsService, AlertService } from '../../_services';
+import { EventsService,AlertService } from '../../_services';
+import * as moment from "moment-timezone";
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-event-details',
@@ -11,86 +13,88 @@ import { ContactsService, AlertService } from '../../_services';
   styleUrls: ['./event-details.component.css']
 })
 export class EventDetailsComponent implements OnInit {
-
   loading = false;
-  submitted = false;
-  data = [];
+  data :any;
+  relatedEvents=[];
+  baseUrl=environment.baseUrl;
   id: any;
-  success=false;
-  error=false;
-  successMessage: any;
-  errorMessage: any;      
-  form: FormGroup;
-  moment= Moment;
-  minStartDate = new Date();
-    minEndDate:Date;
-    maxDate = new Date(new Date().setFullYear(new Date().getFullYear() + 1));
+  moment= moment;
+  imagePath:any;
+  imageSrc:any;
+  noRecordFound=false;
+  overview:any;
+
+  
   constructor(
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
       private router: Router,
-      private contactsService: ContactsService,
+      private eventsService: EventsService,
       private alertService: AlertService
   ) { }
 
   ngOnInit() {
     this.loading = true;
-    this.form = this.formBuilder.group({
-      userName: ['', Validators.required],
-      cellPhone: ['', Validators.required],
-      email: ['', Validators.required],
-      subject: ['', Validators.required],
-      message: ['', Validators.required]
-    });
-    this.loading = false;
+    this.id = this.route.snapshot.paramMap.get('id');
+    this.getEventDetail();
+    this.getRelatedEvents();
   }
-  get f() { return this.form.controls; }
+  getEventDet(id:any){  
 
- 
-  onSubmit() {
+    this.router.navigate(['events']); 
+    this.router.navigate(['event-details/'+id]);                  
 
-    
+  }
+  getEventDetail(){
+    this.eventsService.getById(this.id)
+    .pipe(first())
+    .subscribe(
+        res => {                  
+            if(res['code']!=200){
+              this.alertService.error(res['message']);
+              this.loading = false;
+            }else{
+             this.data=res['data']; 
+              this.imageSrc=environment.baseUrl+this.data['image'];
+              this.overview=this.data['overview'];
+            }
+        },
+        error => {
+            this.alertService.error(error.message);
+            this.loading = false;
+        });    
 
-    this.submitted = true;
-    this.success= false;
-    this.error= false;
-    // reset alerts on submit
-    this.alertService.clear();
+  }
 
-    // stop here if form is invalid
-    if (this.form.invalid) {
-        return;
-    }
-
+  getRelatedEvents() {   
     this.loading = true;
     let params={
-      userName:this.f.userName.value,
-      cellPhone:this.f.cellPhone.value, 
-      email:this.f.email.value,
-      subject:this.f.subject.value,
-      message:this.f.message.value   
+      _id: { $ne: this.id } ,
+      count:4 
     }
     console.log("ddddd====");
-    this.contactsService.add(params)
+    this.eventsService.getEventsList(params)
         .pipe(first())
         .subscribe(
-            data => {
+          (res: any) => {
               this.loading = false;
-            
-              console.log("asssss");      
-                if(data['code']!=200){
-                  this.error = true;
-                  this.errorMessage=data['message'];                    
-                }else{
-                  this.form.reset(); // or form.reset();                    
-                  this.success = true;
-                  this.successMessage=data['message'];                                              
+              console.log("res.data===",res);
+              if (res && res.code == 200) {
+                
+                this.relatedEvents = res.data;
+                if(this.relatedEvents.length >=0 ){
+                  this.noRecordFound = true;
                 }
+              }
+              
+            
             },
             error => {
-              this.error = true;
-              this.errorMessage=error.message;                  
+                              
               this.loading = false;
             });
   }
+
+ 
+  
 }

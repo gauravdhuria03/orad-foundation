@@ -63,6 +63,6 @@ export const FrontendLayoutRoutes: Routes = [
     { path: 'become-an-insider',     component: InsiderComponent },
     { path: 'sponsorship',     component: SponsorshipComponent },
     { path: 'events',     component:EventsComponent},
-    { path: 'event-details',     component:EventDetailsComponent},
+    { path: 'event-details/:id',     component:EventDetailsComponent},
     
 ];

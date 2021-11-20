@@ -78,6 +78,10 @@ export class EventsListComponent implements OnInit {
     this.router.navigate(['admin/events/edit/'+id]);                  
 
   }
+  add(){
+    this.router.navigate(['admin/events/add/']);                  
+
+  }
   
     delete(id:any) {
       

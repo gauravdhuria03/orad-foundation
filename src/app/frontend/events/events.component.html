@@ -33,23 +33,26 @@
         <!-- element-style-section -->
         <section class="element-row element-style pt-60 res-991-pt-30">
             <div class="container">
-                <div class="row">
+                <div class="row" *ngIf="eventsCatData.length>0">
                     <div class="col-lg-6 col-xs-12">
                         <!-- acadion -->
                         <div class="accordion mt-25 mb-25">
                             <!-- toggle -->
-                            <div class="toggle ttm-style-classic ttm-toggle-title-border">
-                                <div class="toggle-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" ><i class="fa fa-cog"></i>Monthly Education Presentation</a></div>
+                            <div class="toggle ttm-style-classic ttm-toggle-title-border" >
+                                <div  class="toggle-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" ><i class="fa fa-cog"></i>{{eventsCatData[0].name}}</a></div>
                                 <div class="toggle-content">
-                                    <div class="row">
+                                    <div class="row" *ngIf="eventsCatData[0].events.length==0">
+                                        <h5>No records found</h5>
+                                    </div>
+                                    <div class="row"  *ngFor="let event of eventsCatData[0].events" >
                                         <div class="col-md-5">
                                             <div class="toggle-figure pr-10">
-                                                <img class="img-fluid" src="./assets/images/portfolio/post-one-1200x800.jpg" alt="image">
+                                                <img class="img-fluid" src="{{baseUrl}}{{event.image}}" alt="image">
                                             </div>
                                         </div>
                                         <div class="col-md-7">
                                             <div class="ml_20 res-767-ml-0">
-                                                <h5> <a href="#">Stepping Beyond the Status Quo in Heart Failure: The Revolutionary Role of SGLT2 Inhibition</a></h5>
+                                                <h5> <a (click)="getEventDetail(event._id)" >{{event.title}}</a></h5>
                                             </div>
                                         </div>
                                     </div>
@@ -58,72 +61,107 @@
                             <!-- toggle -->
                             
                             <!-- toggle -->
-                            <div class="toggle ttm-style-classic ttm-toggle-title-border mb-50">
-                                <div class="toggle-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" ><i class="fa fa-cog"></i>Courses</a></div>
-                                <div class="toggle-content ">
-                                    <div class="row">
-                                        <div class="col-md-5">
-                                            <div class="toggle-figure pr-10">
-                                                <img class="img-fluid" src="./assets/images/portfolio/post-one-1200x800.jpg" alt="image">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-7">
-                                            <div class="ml_20 res-767-ml-0">
-                                                <h5><a href="#">Stepping Beyond the Status Quo in Heart Failure: The Revolutionary Role of SGLT2 Inhibition</a></h5>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div><!-- toggle end -->
-
-                            
+                          
                         </div><!-- acadion end-->
-                    </div>
-
+                    </div>       
+                    
                     <div class="col-lg-6 col-xs-12">
-                        <!-- ttm-progress-bar -->
+                        <!-- acadion -->
                         <div class="accordion mt-25 mb-25">
-                            <div class="toggle ttm-style-classic ttm-toggle-title-border ">
-                                <div class="toggle-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" ><i class="fa fa-cog"></i>Biannual Series</a></div>
+                            <!-- toggle -->
+                            <div class="toggle ttm-style-classic ttm-toggle-title-border" >
+                                <div  class="toggle-title" ><a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" ><i class="fa fa-cog"></i>{{eventsCatData[1].name}}</a></div>
                                 <div class="toggle-content">
-                                    <div class="row">
+                                    <div class="row" *ngIf="eventsCatData[1].events.length==0">
+                                        <h5>No records found</h5>
+                                    </div>
+                                    <div class="row clearfix"  *ngFor="let event of eventsCatData[1].events" >
                                         <div class="col-md-5">
                                             <div class="toggle-figure pr-10">
-                                                <img class="img-fluid" src="./assets/images/portfolio/post-one-1200x800.jpg" alt="image">
+                                                <img class="img-fluid" src="{{baseUrl}}{{event.image}}" alt="image">
                                             </div>
                                         </div>
                                         <div class="col-md-7">
                                             <div class="ml_20 res-767-ml-0">
-                                                <h5> <a href="#">Navigating The Treatment of Schizophrenia Using LAIs In The Time of COVID-19</a></h5>
-                                              
+                                                <h5> <a (click)="getEventDetail(event._id)" >{{event.title}}</a></h5>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div><!-- toggle end -->
+                            <!-- toggle -->
+                            
+                            <!-- toggle -->
+                          
+                        </div><!-- acadion end-->
+                    </div>   
+                </div>
 
-                            <div class="toggle ttm-style-classic ttm-toggle-title-border mb-50">
-                                <div class="toggle-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" ><i class="fa fa-cog"></i>Transcripts</a></div>
+                <div class="row" *ngIf="eventsCatData.length>0">
+                    <div class="col-lg-6 col-xs-12">
+                        <!-- acadion -->
+                        <div class="accordion mt-25 mb-25">
+                            <!-- toggle -->
+                            <div class="toggle ttm-style-classic ttm-toggle-title-border" >
+                                <div  class="toggle-title" ><a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" ><i class="fa fa-cog"></i>{{eventsCatData[2].name}}</a></div>
                                 <div class="toggle-content">
-                                    <div class="row">
+                                    <div class="row" *ngIf="eventsCatData[2].events.length==0">
+                                        <h5>No records found</h5>
+                                    </div>
+                                    <div class="row"  *ngFor="let event of eventsCatData[2].events" >
                                         <div class="col-md-5">
                                             <div class="toggle-figure pr-10">
-                                                <img class="img-fluid" src="./assets/images/portfolio/post-one-1200x800.jpg" alt="image">
+                                                <img class="img-fluid" src="{{baseUrl}}{{event.image}}" alt="image">
                                             </div>
                                         </div>
                                         <div class="col-md-7">
                                             <div class="ml_20 res-767-ml-0">
-                                                <h5><a href="#">Navigating The Treatment of Schizophrenia Using LAIs In The Time of COVID-19</a></h5>
-                                                
+                                                <h5> <a (click)="getEventDetail(event._id)" >{{event.title}}</a></h5>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div><!-- toggle end -->  
-                    </div>
+                            </div><!-- toggle end -->
+                            <!-- toggle -->
+                            
+                            <!-- toggle -->
+                          
+                        </div><!-- acadion end-->
+                    </div>      
+                    
+                    <div class="col-lg-6 col-xs-12">
+                        <!-- acadion -->
+                        <div class="accordion mt-25 mb-25">
+                            <!-- toggle -->
+                            <div class="toggle ttm-style-classic ttm-toggle-title-border" >
+                                <div  class="toggle-title" ><a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" ><i class="fa fa-cog"></i>{{eventsCatData[3].name}}</a></div>
+                                <div class="toggle-content">
+                                    <div class="row" *ngIf="eventsCatData[3].events.length==0">
+                                        <h5>No records found</h5>
+                                    </div>
+                                    <div class="row"  *ngFor="let event of eventsCatData[3].events" >
+                                        <div class="col-md-5">
+                                            <div class="toggle-figure pr-10">
+                                                <img class="img-fluid" src="{{baseUrl}}{{event.image}}" alt="image">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-7">
+                                            <div class="ml_20 res-767-ml-0">
+                                                <h5> <a (click)="getEventDetail(event._id)" >{{event.title}}</a></h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><!-- toggle end -->
+                            <!-- toggle -->
+                            
+                            <!-- toggle -->
+                          
+                        </div><!-- acadion end-->
+                    </div>  
 
-                    </div><!-- section title end -->
                 </div>
+
             </div>
         
     </section>

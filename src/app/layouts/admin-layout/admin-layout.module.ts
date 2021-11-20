@@ -10,6 +10,7 @@ import { InsiderComponent } from '../../admin/insider/insider.component';
 import { ContactsComponent } from '../../admin/contacts/contacts.component';
 import { EventsListComponent } from '../../admin/events/list/list.component';
 import { EditEventComponent } from '../../admin/events/edit/edit.component';
+import { AddEventComponent } from '../../admin/events/add/add.component';
 
 import { DashboardComponent } from '../../admin/dashboard/dashboard.component';
 import { UserProfileComponent } from '../../admin/user-profile/user-profile.component';
@@ -24,7 +25,9 @@ import {MatSelectModule} from '@angular/material/select';
 import { MatPaginatorModule } from '@angular/material/paginator';
 
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatTimepickerModule } from 'mat-timepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { AngularEditorModule } from '@kolkov/angular-editor';
 
 @NgModule({
   imports: [
@@ -40,7 +43,9 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatTooltipModule,
     MatPaginatorModule,    
     MatNativeDateModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    MatTimepickerModule,
+    AngularEditorModule
     
 
   ],
@@ -54,7 +59,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     InsiderComponent,
     ContactsComponent,
     EventsListComponent,
-    EditEventComponent
+    EditEventComponent,
+    AddEventComponent
     
   ]
 })

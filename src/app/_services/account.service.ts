@@ -78,6 +78,10 @@ export class AccountService {
     countAll() {
         return this.http.get<User[]>(`${environment.apiUrl}/users/count`);
     }
+    getDashboardCounts() {
+        return this.http.get<User[]>(`${environment.apiUrl}/users/getDashboardCounts`);
+    }
+    
 
     getById(id: string) {
         

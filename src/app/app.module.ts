@@ -45,6 +45,8 @@ import * as jQuery from 'jquery';
     FrontendLayoutComponent,
     LoginComponent,
     AlertComponent
+    
+    
  
     
   ],

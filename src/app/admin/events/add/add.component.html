@@ -117,7 +117,7 @@
                                     <select matNativeControl appearance="fill" formControlName="category_id"
                                     [ngClass]="{ 'is-invalid': submitted && f.category_id.errors }">
                                 <option *ngFor="let cat of eventsCategoriesData" 
-                                [selected] ="cat._id == selectedEventId"
+                           
                                 value="{{cat._id}}">{{cat.name}}</option>
                                  
                                     </select>
@@ -127,60 +127,56 @@
                         <div class="row">
                             <div class="col-md-12">
       
-  
-                             
+                              <angular-editor formControlName="overview" [config]="editorConfig"  class="my-large-area"></angular-editor>
                                 
-                                <angular-editor formControlName="overview" [config]="editorConfig"  class="my-large-area"></angular-editor>
-                                
-                                  <div *ngIf="submitted && f.overview.errors" class="invalid-feedback">
-                                      <div *ngIf="f.overview.errors.required">Overview is required</div>
-                                </div>
-                               
-                          </div>
-                      </div>
-                            <div class="row">
-                              <div class="col-md-12 mb-4">
-                                  <div class="video_upload">
-                                      <div class="video_section">
-                                         <!-- <div class="live_img height_104" *ngIf="!data.image">
-                                              <img src="../../../../assets/images/index.png" />
-                                          </div>
-                                           <div class="live_img height_104" *ngIf="data.image">
-                                              <img src="{{data.image}}" />
-                                          </div> -->
-                                      </div>
-          
-                                      <div class="video_text">
-                                          <p>Upload new thumbnail image <span><i title="Image associated with event" class="fa fa-info-circle" aria-hidden="true"></i></span></p>
-                                          <!-- <p><span>Recommended Image Size 200x200</span></p> -->
-                                          <input type="file" class="form-control" accept="image/*" formControlName="image"
-                                                 (change)="uploadEventImage($event)">
-                                      </div>
-                                      <div *ngIf="submitted && f.image.errors" class="invalid-feedback">
-                                        <div *ngIf="f.image.errors.required">Image is required</div>
-                                      </div>
-                                  </div>
-                              </div>
-                              <div class="col-md-12 mb-4">
-                              <img [src]="imageSrc" *ngIf="imageSrc" style="height: 100px; width:150px">
-                              </div>
-                          </div>
-  
-                          <div *ngIf="currentFile" class="progress my-3">
-                            <div
-                              class="progress-bar progress-bar-info progress-bar-striped"
-                              role="progressbar"
-                              attr.aria-valuenow="{{ progress }}"
-                              aria-valuemin="0"
-                              aria-valuemax="100"
-                              [ngStyle]="{ width: progress + '%' }"
-                            >
-                              {{ progress }}%
+                              <div *ngIf="submitted && f.overview.errors" class="invalid-feedback">
+                                  <div *ngIf="f.overview.errors.required">Overview is required</div>
                             </div>
                           </div>
-                          
-                          <div *ngIf="message" class="alert alert-secondary" role="alert">{{ message }}</div>
-                          
+                      </div>
+                      <div class="row">
+                        <div class="col-md-12 mb-4">
+                            <div class="video_upload">
+                                <div class="video_section">
+                                   <!-- <div class="live_img height_104" *ngIf="!data.image">
+                                        <img src="../../../../assets/images/index.png" />
+                                    </div>
+                                     <div class="live_img height_104" *ngIf="data.image">
+                                        <img src="{{data.image}}" />
+                                    </div> -->
+                                </div>
+    
+                                <div class="video_text">
+                                    <p>Upload new thumbnail image <span><i title="Image associated with event" class="fa fa-info-circle" aria-hidden="true"></i></span></p>
+                                    <!-- <p><span>Recommended Image Size 200x200</span></p> -->
+                                    <input type="file" class="form-control" accept="image/*" formControlName="image"
+                                           (change)="uploadEventImage($event)">
+                                </div>
+                                <div *ngIf="submitted && f.image.errors" class="invalid-feedback">
+                                  <div *ngIf="f.image.errors.required">Image is required</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 mb-4">
+                        <img [src]="imageSrc" *ngIf="imageSrc" style="height: 100px; width:150px">
+                        </div>
+                    </div>
+
+                    <div *ngIf="currentFile" class="progress my-3">
+                      <div
+                        class="progress-bar progress-bar-info progress-bar-striped"
+                        role="progressbar"
+                        attr.aria-valuenow="{{ progress }}"
+                        aria-valuemin="0"
+                        aria-valuemax="100"
+                        [ngStyle]="{ width: progress + '%' }"
+                      >
+                        {{ progress }}%
+                      </div>
+                    </div>
+                    
+                    <div *ngIf="message" class="alert alert-secondary" role="alert">{{ message }}</div>
+                    
                             <button mat-raised-button type="submit" class="btn btn-danger pull-right">Update event</button>
                             <div class="clearfix"></div>
                         </form>

@@ -6,7 +6,7 @@ import { InsiderComponent } from '../../admin/insider/insider.component';
 import { ContactsComponent } from '../../admin/contacts/contacts.component';
 import { EventsListComponent } from '../../admin/events/list/list.component';
 import { EditEventComponent } from '../../admin/events/edit/edit.component';
-
+import { AddEventComponent } from '../../admin/events/add/add.component';
 
 import { DashboardComponent } from '../../admin/dashboard/dashboard.component';
 import { UserProfileComponent } from '../../admin/user-profile/user-profile.component';
@@ -22,6 +22,7 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'admin/insider', component: InsiderComponent },
     { path: 'admin/contacts', component: ContactsComponent },
     { path: 'admin/events', component: EventsListComponent },
-    { path: 'admin/events/edit/:id', component: EditEventComponent }
+    { path: 'admin/events/edit/:id', component: EditEventComponent },
+    { path: 'admin/events/add', component: AddEventComponent }
     
 ];

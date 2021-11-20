@@ -3,6 +3,8 @@
       <div class="row">
          
           <div class="col-md-12">
+            <a class="nav-link" (click)="add()"> Add Event</a>
+              
               <div class="card card-plain">
                   <div class="card-header card-header-danger">
                       <h4 class="card-title mt-0">Events</h4>
@@ -12,16 +14,12 @@
                       <div class="table-responsive">
                           <table class="table table-hover">
                               <thead class="">
-                                  <th>
-                                      ID
-                                  </th>
+                                
                                   <th>
                                       Title
                                   </th>
                                
-                                  <th>
-                                    Overview
-                                  </th>
+                                
                                   <th>
                                       Zoom link
                                   </th>
@@ -32,6 +30,12 @@
                                     End date
                                   </th>
                                   <th>
+                                    Start time
+                                  </th>
+                                  <th>
+                                    End time
+                                  </th>
+                                  <th>
                                     Status
                                     </th>
                                   <th>
@@ -40,25 +44,28 @@
                               </thead>
                               <tbody>
                                   <tr *ngFor="let udata  of dataObject">
-                                      <td>
-                                          1
-                                      </td>
+                                    
                                       <td>
                                           {{udata.title}}
                                       </td>
-                                      <td>
-                                        {{udata.overview}}
-                                      </td>
+                                 
                                       <td>
                                         {{udata.zoomLink}}
                                       </td>
                                       <td>
-                                       {{ moment.unix(udata.startDate).format("DD/MM/yyyy hh:mm a")}}
+                                       {{ moment.unix(udata.startDate).format("DD/MM/yyyy")}}
 
                                       </td>
                                       <td>
-                                        {{moment.unix(udata.endDate).format("DD/MM/yyyy hh:mm a")}}
+                                        {{moment.unix(udata.endDate).format("DD/MM/yyyy")}}
                                       </td>
+                                      <td>
+                                        {{ moment.unix(udata.startTime).format("hh:mm a")}}
+ 
+                                       </td>
+                                       <td>
+                                         {{moment.unix(udata.endTime).format("hh:mm a")}}
+                                       </td>
                                       <td>
                                         <span *ngIf="udata.isActive == true" (click)="changeStatus(udata._id,false)">Active</span>
 

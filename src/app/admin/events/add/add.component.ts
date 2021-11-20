@@ -9,37 +9,37 @@ import { HttpEventType, HttpResponse } from '@angular/common/http';
 import { environment } from '../../../../environments/environment';
 import { AngularEditorConfig } from "@kolkov/angular-editor";
 import Swal from "sweetalert2";
+
 import { EventsCategoriesService,EventsService,AccountService, AlertService } from '../../../_services';
 @Component({
-  selector: 'edit-event',
-  templateUrl: './edit.component.html',
-  styleUrls: ['./edit.component.css']
+  selector: 'add-event',
+  templateUrl: './add.component.html',
+  styleUrls: ['./add.component.css']
 })
-export class EditEventComponent implements OnInit {
+export class AddEventComponent implements OnInit {
   loading = false;
   submitted = false;
   data = [];
   eventsCategoriesData = [];
-  id: any;
+  
   selectedEventId:any;
   form: FormGroup;
   moment= moment;
   minStartDate = new Date();
   minEndDate=new Date();
-  imagePath:any;
-  imageSrc:any;
+  
   sTime: any;
   eTime: any;
   sDate: any;
   eDate: any;
   defaulTime:any;
-
+  imagePath:any;
+  imageSrc:any;
   selectedFiles?: FileList;
   currentFile?: File;
   progress = 0;
   message = '';
   fileInfos?: Observable<any>;
-
   editorConfig: AngularEditorConfig = {
     editable: true,
     spellcheck: true,
@@ -97,61 +97,19 @@ export class EditEventComponent implements OnInit {
       endTime: new FormControl(this.defaulTime, [
         Validators.required
       ]),
-      image: new FormControl('')
-      
+      image: new FormControl('', [
+        Validators.required
+      ]),
    });   
 
     this.loading = true;
-    this.id = this.route.snapshot.paramMap.get('id');
     
     console.log('location.origin===',location.origin);
-    this.getEventsCategories();
-    this.getEventDetail();
+    this.getEventsCategories();    
   }
   get f() { return this.form.controls; }
  
-  getEventDetail(){
-    this.eventsService.getById(this.id)
-    .pipe(first())
-    .subscribe(
-        res => {                  
-            if(res['code']!=200){
-              this.alertService.error(res['message']);
-              this.loading = false;
-            }else{
-             this.data=res['data'];  
-             
-              this.sDate = new Date(moment.unix(this.data['startDate']).format("MM/DD/YYYY"));              
-              this.minEndDate = this.sDate;             
-              this.eDate = new Date(moment.unix(this.data['endDate']).format("MM/DD/YYYY"));  
-           
-              let sTimee = new Date(moment.unix(this.data['startTime']).format("MM/DD/YYYY hh:mm a"));
-              let eTimee = new Date(moment.unix(this.data['endTime']).format("MM/DD/YYYY hh:mm a"));   
-              this.imageSrc=environment.baseUrl+this.data['image'];
-              this.imagePath=this.data['image'];
-        
-         
-
-           this.form.patchValue({
-            title:this.data['title'],
-            overview:this.data['overview'],
-            zoomLink:this.data['zoomLink'],
-            zoomId:this.data['zoomId'],
-            category_id:this.data['category_id'],
-            startDate:this.sDate,
-            endDate:this.eDate,
-            startTime:sTimee,
-            endTime:eTimee
-           });
-           this.selectedEventId=this.data['category_id'];
-            }
-        },
-        error => {
-            this.alertService.error(error.message);
-            this.loading = false;
-        });    
-
-  }
+  
 
 
   getEventsCategories(){
@@ -189,6 +147,9 @@ onEndTimeChange(e){
 }
 
 uploadEventImage(e){
+
+ 
+  console.log(" e.target.file==", e.target.files);
   console.log(" e.target.file==", e.target.files);
   this.progress = 0;
   this.selectedFiles = e.target.files;
@@ -214,9 +175,6 @@ uploadEventImage(e){
         });
         return false;
       }else{
-  
- 
-  if (this.selectedFiles) {
     const file: File | null = this.selectedFiles.item(0);
 
     if (file) {
@@ -249,15 +207,11 @@ uploadEventImage(e){
     }
 
     this.selectedFiles = undefined;
- 
-        }
-      }
     }
   }
-    
-}
-
   
+  }
+}
 
 
   onSubmit() {
@@ -279,12 +233,9 @@ uploadEventImage(e){
 
    let startDate=moment(this.form.value.startDate).utc().unix();
    let endDate=moment(this.form.value.endDate).utc().unix();
-   
 
-   console.log("imagePath=========", this.imagePath)
-   //console.log("imagePath=========", this.imagePath);
-    let params = {
-      "id":this.id,
+   console.log("endDate=========",endDate);
+    let params = {     
       "title": this.form.value.title,
       "overview": this.form.value.overview,
       "zoomLink": this.form.value.zoomLink,
@@ -295,8 +246,9 @@ uploadEventImage(e){
       "startTime": startTime,
       "endTime": endTime,
       "image":this.imagePath
+    
   };
-    this.eventsService.update(params)
+    this.eventsService.add(params)
         .pipe(first())
         .subscribe(
             data => {                  

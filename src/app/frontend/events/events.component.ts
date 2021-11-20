@@ -3,7 +3,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 import * as Moment from 'moment';
-import { ContactsService, AlertService } from '../../_services';
+import { EventsService, AlertService } from '../../_services';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-events',
@@ -14,10 +15,13 @@ export class EventsComponent implements OnInit {
 
   loading = false;
   submitted = false;
+  baseUrl=environment.baseUrl;
   data = [];
+  eventsCatData = [];
   id: any;
   success=false;
   error=false;
+  noRecordFound=false;
   successMessage: any;
   errorMessage: any;      
   form: FormGroup;
@@ -29,63 +33,73 @@ export class EventsComponent implements OnInit {
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
       private router: Router,
-      private contactsService: ContactsService,
+      private eventsService: EventsService,
       private alertService: AlertService
   ) { }
 
-  ngOnInit() {
-    this.loading = true;
-    this.form = this.formBuilder.group({
-      userName: ['', Validators.required],
-      cellPhone: ['', Validators.required],
-      email: ['', Validators.required],
-      subject: ['', Validators.required],
-      message: ['', Validators.required]
-    });
-    this.loading = false;
+  ngOnInit() { 
+    this.getEventsCategories();
+
   }
-  get f() { return this.form.controls; }
 
- 
-  onSubmit() {
+  getEventDetail(id:any){
+    this.router.navigate(['event-details/'+id]);                  
 
-    
+  }
 
-    this.submitted = true;
-    this.success= false;
-    this.error= false;
-    // reset alerts on submit
-    this.alertService.clear();
-
-    // stop here if form is invalid
-    if (this.form.invalid) {
-        return;
-    }
-
+  getEventsCategories() {   
     this.loading = true;
-    let params={
-      userName:this.f.userName.value,
-      cellPhone:this.f.cellPhone.value, 
-      email:this.f.email.value,
-      subject:this.f.subject.value,
-      message:this.f.message.value   
-    }
-    console.log("ddddd====");
-    this.contactsService.add(params)
+    
+    this.eventsService.getEventsCategories()
         .pipe(first())
         .subscribe(
-            data => {
+          (res: any) => {
               this.loading = false;
-            
-              console.log("asssss");      
-                if(data['code']!=200){
-                  this.error = true;
-                  this.errorMessage=data['message'];                    
-                }else{
-                  this.form.reset(); // or form.reset();                    
-                  this.success = true;
-                  this.successMessage=data['message'];                                              
+              console.log("res.data sfdsfdsdsfdsf===",res);
+              if (res && res.code == 200) {
+                
+                this.eventsCatData = res.data;
+                if(this.eventsCatData.length >=0 ){
+                  this.noRecordFound = true;
                 }
+              }
+              else {
+                this.errorMessage=res.message;                  
+
+              }
+            
+            },
+            error => {
+              this.error = true;
+              this.errorMessage=error.message;                  
+              this.loading = false;
+            });
+  }
+
+  getEventsList(id:any) {   
+    this.loading = true;
+    let params={
+      category_id:id    
+    }
+    console.log("ddddd====");
+    this.eventsService.getEventsList(params)
+        .pipe(first())
+        .subscribe(
+          (res: any) => {
+              this.loading = false;
+              console.log("res.data===",res);
+              if (res && res.code == 200) {
+                
+                this.data = res.data;
+                if(this.data.length >=0 ){
+                  this.noRecordFound = true;
+                }
+              }
+              else {
+                this.errorMessage=res.message;                  
+
+              }
+            
             },
             error => {
               this.error = true;

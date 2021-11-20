@@ -16,8 +16,9 @@ export class DashboardComponent implements OnInit {
   
   usersCount: any = '';
   contactsCount: any ='' ;
-  totalEvents: any = '';
-  totalInsider: any = '';
+  eventsCount: any = '';
+  insiderCount: any = '';
+  sponsorshipCount:any = '';
 
   
   constructor(
@@ -32,18 +33,22 @@ export class DashboardComponent implements OnInit {
       seq2 = 0;
   
   ngOnInit() {
-
+    this.getAll();
 
   }
   getAll(){
   
-    this.accountService.countAll()
+    this.accountService.getDashboardCounts()
     .pipe(first())
     .subscribe((res: any) => {                
-            
+            console.log("res==",res);
             if (res && res.code == genralConfig.statusCode.ok) {
              
-              this.usersCount = res.usersCount;       
+              this.usersCount = res.data.usersCount;
+              this.insiderCount = res.data.insiderCount;
+              this.sponsorshipCount = res.data.sponsorshipCount;
+              this.eventsCount = res.data.eventsCount;
+              this.contactsCount = res.data.contactsCount;           
               
             }else {
               this.toastr.error(res.message);

@@ -89,7 +89,8 @@ export class SponsorshipComponent implements OnInit {
                   this.error = true;
                   this.errorMessage=data['message'];                    
                 }else{
-                  this.form.reset(); // or form.reset();                    
+                  this.form.reset(); // or form.reset(); 
+                  this.form.clearValidators(); // or form.reset();                    
                   this.success = true;
                   this.successMessage=data['message'];                                              
                 }
