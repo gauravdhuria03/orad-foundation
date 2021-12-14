@@ -251,7 +251,7 @@
                                                                 <label>
                                                                     <span class="text-input">
                                                                                                    
-                                                                        <input type="email" formControlName="email"  placeholder="Email Id" [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+                                                                        <input type="email" formControlName="email"  placeholder="Email*" [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
                                                                         <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
                                                                             <div *ngIf="f.email.errors.required">Email Id is required</div>
                                                                         </div> 
@@ -280,7 +280,7 @@
                                                                 <label>
                                                                     <span class="text-input">
                                                                         <select style="height:45px;" formControlName="levelOfSponsership" tabindex="-1" class="select2-hidden-accessible" aria-hidden="true" [ngClass]="{ 'is-invalid': submitted && f.companyWebsite.errors }">
-                                                                            <option value="" class="select-empty">Level of Sponsorship</option>
+                                                                            <option value="" class="select-empty">Level of Sponsorship*</option>
                                                                             <option value="dental">Sponsor a group session</option>
                                                                             <option value="dermatologist">Sponsor a seminar</option>
                                                                             <option value="health-care">Sponsor a course</option>
